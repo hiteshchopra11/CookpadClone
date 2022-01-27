@@ -1,0 +1,5 @@
+rootProject.name = "CookpadClone"
+include ':app'
+include ':domain'
+include ':data'
+include ':buildsrc'
