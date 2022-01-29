@@ -4,4 +4,7 @@
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="unknown_error">Some unknown error occurred</string>
   <string name="network_error">Network Error!! Please try again later.</string>
+  <string name="story">Story</string>
+  <string name="ingredients">Ingredients</string>
+  <string name="steps">Steps</string>
 </resources>

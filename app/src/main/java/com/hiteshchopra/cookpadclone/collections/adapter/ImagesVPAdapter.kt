@@ -7,31 +7,31 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import coil.load
 import com.hiteshchopra.cookpadclone.R
-import com.hiteshchopra.cookpadclone.collections.adapter.CollectionImagesVPAdapter.CollectionImagesVH
-import com.hiteshchopra.cookpadclone.databinding.ItemCollectionImageBinding
+import com.hiteshchopra.cookpadclone.collections.adapter.ImagesVPAdapter.ImagesVH
+import com.hiteshchopra.cookpadclone.databinding.ItemImageBinding
 
-class CollectionImagesVPAdapter(private val listOfImages: List<String?>?) :
-  Adapter<CollectionImagesVH>() {
+class ImagesVPAdapter(private val listOfImages: List<String?>?) :
+  Adapter<ImagesVH>() {
 
-  inner class CollectionImagesVH(private val binding: ItemCollectionImageBinding) :
+  inner class ImagesVH(private val binding: ItemImageBinding) :
     ViewHolder(binding.root) {
     fun bind(imageUrl: String?) {
       binding.ivCollectionImage.load(imageUrl)
     }
   }
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionImagesVH {
-    return CollectionImagesVH(
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesVH {
+    return ImagesVH(
       DataBindingUtil.inflate(
         LayoutInflater.from(parent.context),
-        R.layout.item_collection_image,
+        R.layout.item_image,
         parent,
         false
       )
     )
   }
 
-  override fun onBindViewHolder(holder: CollectionImagesVH, position: Int) {
+  override fun onBindViewHolder(holder: ImagesVH, position: Int) {
     holder.bind(listOfImages?.get(position))
   }
 

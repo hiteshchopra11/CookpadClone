@@ -3,6 +3,7 @@ plugins {
   id 'kotlin-android'
   id 'kotlin-kapt'
   id 'dagger.hilt.android.plugin'
+  id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -65,4 +66,8 @@ dependencies {
 
   /* Coil for Loading Images */
   implementation "io.coil-kt:coil:1.4.0"
+
+  /* Navigation Graph */
+  implementation "androidx.navigation:navigation-fragment-ktx:2.4.0"
+  implementation "androidx.navigation:navigation-ui-ktx:2.4.0"
 }

@@ -13,15 +13,15 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hiteshchopra.cookpadclone.R
 import com.hiteshchopra.cookpadclone.R.string
-import com.hiteshchopra.cookpadclone.collections.ViewState.Failure
-import com.hiteshchopra.cookpadclone.collections.ViewState.Loading
-import com.hiteshchopra.cookpadclone.collections.ViewState.NetworkError
-import com.hiteshchopra.cookpadclone.collections.ViewState.SuccessWithData
-import com.hiteshchopra.cookpadclone.collections.adapter.CollectionImagesVPAdapter
+import com.hiteshchopra.cookpadclone.collections.adapter.ImagesVPAdapter
 import com.hiteshchopra.cookpadclone.collections.adapter.CollectionsAdapter
 import com.hiteshchopra.cookpadclone.collections.adapter.CollectionsListener
 import com.hiteshchopra.cookpadclone.databinding.FragmentCollectionsBinding
 import com.hiteshchopra.cookpadclone.databinding.ItemCollectionsBinding
+import com.hiteshchopra.cookpadclone.utils.ViewState.Failure
+import com.hiteshchopra.cookpadclone.utils.ViewState.Loading
+import com.hiteshchopra.cookpadclone.utils.ViewState.NetworkError
+import com.hiteshchopra.cookpadclone.utils.ViewState.SuccessWithData
 import com.hiteshchopra.cookpadclone.utils.showToast
 import com.hiteshchopra.domain.model.CollectionsItemDomain
 import dagger.hilt.android.AndroidEntryPoint
@@ -83,7 +83,7 @@ class CollectionsFragment : Fragment(), CollectionsListener {
     itemCollectionBinding: ItemCollectionsBinding,
     imagesCollection: List<String?>?
   ) {
-    val collectionImagesVPAdapter = CollectionImagesVPAdapter(imagesCollection)
+    val collectionImagesVPAdapter = ImagesVPAdapter(imagesCollection)
     itemCollectionBinding.vpCollectionImages.adapter = collectionImagesVPAdapter
     TabLayoutMediator(
       itemCollectionBinding.tabDotIndicator,

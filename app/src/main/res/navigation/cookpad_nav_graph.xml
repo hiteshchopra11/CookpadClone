@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/cookpad_nav_graph"
+  app:startDestination="@id/homeFragment">
+
+  <fragment
+    android:id="@+id/collectionsFragment"
+    android:name="com.hiteshchopra.cookpadclone.collections.CollectionsFragment"
+    android:label="CollectionsFragment"
+    tools:layout="@layout/fragment_collections">
+    <argument
+      android:name="collectionId"
+      app:argType="integer" />
+  </fragment>
+  <fragment
+    android:id="@+id/recipesFragment"
+    android:name="com.hiteshchopra.cookpadclone.recipes.RecipesFragment"
+    android:label="RecipesFragment"
+    tools:layout="@layout/fragment_recipes">
+    <action
+      android:id="@+id/action_recipesFragment_to_recipeDetailsFragment"
+      app:destination="@id/recipeDetailsFragment" />
+    <argument
+      android:name="isCollectionRecipe"
+      android:defaultValue="false"
+      app:argType="boolean" />
+  </fragment>
+  <fragment
+    android:id="@+id/recipeDetailsFragment"
+    android:name="com.hiteshchopra.cookpadclone.recipes.details.RecipeDetailsFragment"
+    android:label="RecipeDetailsFragment"
+    tools:layout="@layout/fragment_recipe_details">
+    <argument
+      android:name="recipe"
+      app:argType="com.hiteshchopra.domain.model.RecipeItemDomain" />
+  </fragment>
+  <action
+    android:id="@+id/action_global_recipesFragment"
+    app:destination="@id/recipesFragment" />
+  <fragment
+    android:id="@+id/homeFragment"
+    android:name="com.hiteshchopra.cookpadclone.HomeFragment"
+    android:label="HomeFragment"
+    tools:layout="@layout/fragment_home">
+    <action
+      android:id="@+id/action_homeFragment_to_recipesFragment"
+      app:destination="@id/recipesFragment" />
+    <action
+      android:id="@+id/action_homeFragment_to_recipeDetailsFragment"
+      app:destination="@id/recipeDetailsFragment" />
+  </fragment>
+</navigation>

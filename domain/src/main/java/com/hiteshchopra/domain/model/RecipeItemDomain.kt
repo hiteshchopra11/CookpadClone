@@ -1,7 +1,10 @@
 package com.hiteshchopra.domain.model
 
+import android.os.Parcelable
 import com.hiteshchopra.domain.mapper.DomainModel
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class RecipeItemDomain(
   val id: Int?,
   val imageUrl: String?,
@@ -11,14 +14,16 @@ data class RecipeItemDomain(
   val story: String?,
   val title: String?,
   val user: RecipeUserDomain?
-) : DomainModel()
+) : DomainModel(), Parcelable
 
+@Parcelize
 data class RecipeStepsDomain(
   val description: String?,
   val imageUrls: List<String?>?
-) : DomainModel()
+) : DomainModel(), Parcelable
 
+@Parcelize
 data class RecipeUserDomain(
   val imageUrl: String?,
   val name: String?
-) : DomainModel()
+) : DomainModel(), Parcelable

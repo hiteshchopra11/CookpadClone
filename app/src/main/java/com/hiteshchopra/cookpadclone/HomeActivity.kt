@@ -18,21 +18,5 @@ class HomeActivity : FragmentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
-    initUI()
-  }
-
-  private fun initUI() {
-    val pagerAdapter = HomePagerAdapter(this)
-    val homeFragmentList = listOf(CollectionsFragment(), RecipesFragment())
-    pagerAdapter.homeFragments.addAll(homeFragmentList)
-    binding.pager.adapter = pagerAdapter
-    binding.pager.currentItem = 0
-    TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
-      tab.text = when (position) {
-        0 -> "Collections"
-        1 -> "Recipes"
-        else -> ""
-      }
-    }.attach()
   }
 }
