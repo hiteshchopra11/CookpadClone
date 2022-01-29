@@ -4,6 +4,7 @@ import com.hiteshchopra.data.remote.CookpadApiService
 import com.hiteshchopra.data.remote.source.CookpadRemoteSource
 import com.hiteshchopra.data.remote.source.ICookpadRemoteSource
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
@@ -11,6 +12,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object SourcesModule {
 
+  @Provides
   fun providesCookpadRemoteSource(cookpadApiService: CookpadApiService): ICookpadRemoteSource {
     return CookpadRemoteSource(
       cookpadApiService

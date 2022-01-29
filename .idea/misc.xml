@@ -3,7 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/default_dot.xml" value="0.19722222222222222" />
+        <entry key="app/src/main/res/drawable/selected_dot.xml" value="0.19722222222222222" />
+        <entry key="app/src/main/res/drawable/selected_fot.xml" value="0.18888888888888888" />
+        <entry key="app/src/main/res/drawable/tab_selector.xml" value="0.18888888888888888" />
+        <entry key="app/src/main/res/drawable/unselected_dot.xml" value="0.18888888888888888" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.29025641025641025" />
+        <entry key="app/src/main/res/layout/fragment_collections.xml" value="0.2149129339132767" />
+        <entry key="app/src/main/res/layout/fragment_recipes.xml" value="0.1409078551781163" />
+        <entry key="app/src/main/res/layout/item_collection_image.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_collections.xml" value="0.41450651150388873" />
+        <entry key="app/src/main/res/layout/page_layout.xml" value="0.27589743589743587" />
       </map>
     </option>
   </component>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="title"
+      type="String" />
+
+    <variable
+      name="description"
+      type="String" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+      android:id="@+id/tv_collection_name"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="casual"
+      android:paddingTop="@dimen/dimen_16dp"
+      android:text="@{title}"
+      android:textColor="@color/black"
+      android:textSize="@dimen/dimen_18sp"
+      app:layout_constraintStart_toStartOf="@id/cv_collection"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Cooking Basics ->" />
+
+    <com.google.android.material.card.MaterialCardView
+      android:id="@+id/cv_collection"
+      android:layout_width="@dimen/dimen_0dp"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/dimen_8dp"
+      android:padding="@dimen/dimen_8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/tv_collection_name"
+      app:strokeColor="@color/black"
+      app:strokeWidth="@dimen/dimen_1dp"
+      tools:cardBackgroundColor="@android:color/transparent"
+      tools:cardElevation="@dimen/dimen_0dp">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+          android:id="@+id/vp_collection_images"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dimen_200dp"
+          android:layout_margin="@dimen/dimen_16dp"
+          app:layout_constraintBottom_toTopOf="@id/tab_dot_indicator"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.tabs.TabLayout
+          android:id="@+id/tab_dot_indicator"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="bottom"
+          app:layout_constraintBottom_toTopOf="@id/tv_collection_description"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/vp_collection_images"
+          app:tabBackground="@drawable/tab_selector"
+          app:tabGravity="center"
+          app:tabIndicatorHeight="0dp" />
+
+        <TextView
+          android:id="@+id/tv_collection_description"
+          android:layout_width="@dimen/dimen_0dp"
+          android:layout_height="wrap_content"
+          android:layout_margin="@dimen/dimen_8dp"
+          android:ellipsize="end"
+          android:fontFamily="@font/andika"
+          android:maxLines="2"
+          android:text="@{description}"
+          android:textColor="@color/black"
+          android:textSize="@dimen/dimen_16sp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/tab_dot_indicator"
+          tools:text="Get back to the basic with these simple and delicious recipes" />
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
