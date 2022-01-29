@@ -1,4 +1,4 @@
-package com.hiteshchopra.cookpadclone.adapter
+package com.hiteshchopra.cookpadclone.home
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

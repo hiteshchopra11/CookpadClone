@@ -12,11 +12,7 @@ class CookpadApplication : Application(), ImageLoaderFactory {
   override fun newImageLoader(): ImageLoader {
     return ImageLoader.Builder(applicationContext)
       .crossfade(true)
-      .okHttpClient {
-        OkHttpClient.Builder()
-          .cache(CoilUtils.createDefaultCache(applicationContext))
-          .build()
-      }
+      .placeholder(R.drawable.ic_placeholder)
       .build()
   }
 }

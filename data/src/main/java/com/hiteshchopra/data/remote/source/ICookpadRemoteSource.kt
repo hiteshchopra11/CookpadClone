@@ -9,7 +9,7 @@ interface ICookpadRemoteSource {
 
   suspend fun getCollectionById(id: Int): SafeResult<CollectionsItemData>
 
-  suspend fun getCollectionRecipe(id: Int): SafeResult<RecipeItemData>
+  suspend fun getCollectionRecipe(id: Int): SafeResult<ArrayList<RecipeItemData>>
 
   suspend fun getRecipes(): SafeResult<ArrayList<RecipeItemData>>
 

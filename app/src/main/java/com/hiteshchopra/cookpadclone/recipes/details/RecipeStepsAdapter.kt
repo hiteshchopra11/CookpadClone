@@ -12,13 +12,14 @@ import com.hiteshchopra.domain.model.RecipeStepsDomain
 
 class RecipeStepsAdapter(
   private val recipeStepsListener: RecipeStepsListener,
-  private val stepsList: List<RecipeStepsDomain>
+  private val stepsList: List<RecipeStepsDomain?>?
 ) : Adapter<RecipeStepViewHolder>() {
 
-  inner class RecipeStepViewHolder(val binding: ItemStepBinding) : ViewHolder(binding.root) {
-    fun bind(recipeStepDomain: RecipeStepsDomain) {
-      binding.tvStepDescription.text = recipeStepDomain.description
-      recipeStepsListener.populateImages(binding,recipeStepDomain.imageUrls)
+  inner class RecipeStepViewHolder(val binding: ItemStepBinding) :
+    ViewHolder(binding.root) {
+    fun bind(recipeStepDomain: RecipeStepsDomain, position: Int) {
+      binding.step = "${position + 1}.) ${recipeStepDomain.description}"
+      recipeStepsListener.populateImages(binding, recipeStepDomain.imageUrls)
     }
   }
 
@@ -34,10 +35,10 @@ class RecipeStepsAdapter(
   }
 
   override fun onBindViewHolder(holder: RecipeStepViewHolder, position: Int) {
-    holder.bind(stepsList[position])
+    stepsList?.get(position)?.let { holder.bind(it, position) }
   }
 
-  override fun getItemCount(): Int = stepsList.size
+  override fun getItemCount(): Int = stepsList?.size ?: 0
 }
 
 interface RecipeStepsListener {

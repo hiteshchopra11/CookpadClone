@@ -36,6 +36,13 @@
       app:tabGravity="center"
       app:tabIndicatorHeight="0dp" />
 
+    <androidx.constraintlayout.widget.Barrier
+      android:id="@+id/barrier"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:barrierDirection="bottom"
+      app:constraint_referenced_ids="tab_dot_indicator,vp_recipe_steps_images" />
+
     <TextView
       android:id="@+id/tv_step_description"
       android:layout_width="@dimen/dimen_0dp"
@@ -46,10 +53,11 @@
       android:text="@{step}"
       android:textColor="@color/black"
       android:textSize="@dimen/dimen_16sp"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/tab_dot_indicator"
+      app:layout_constraintTop_toBottomOf="@id/barrier"
       tools:text="Mini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by Vaggelio" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>

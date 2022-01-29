@@ -24,9 +24,9 @@ class CookpadRemoteSource(
     }
   }
 
-  override suspend fun getCollectionRecipe(id: Int): SafeResult<RecipeItemData> {
+  override suspend fun getCollectionRecipe(id: Int): SafeResult<ArrayList<RecipeItemData>> {
     return safeApiCall(dispatcher) {
-      cookpadApiService.getCollectionRecipe(id)
+      cookpadApiService.getCollectionRecipes(id)
     }
   }
 

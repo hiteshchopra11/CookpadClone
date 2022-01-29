@@ -1,49 +1,37 @@
 package com.hiteshchopra.cookpadclone.collections
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hiteshchopra.cookpadclone.R
 import com.hiteshchopra.cookpadclone.R.string
-import com.hiteshchopra.cookpadclone.collections.adapter.ImagesVPAdapter
+import com.hiteshchopra.cookpadclone.base.BaseFragment
 import com.hiteshchopra.cookpadclone.collections.adapter.CollectionsAdapter
 import com.hiteshchopra.cookpadclone.collections.adapter.CollectionsListener
+import com.hiteshchopra.cookpadclone.collections.adapter.ImagesVPAdapter
 import com.hiteshchopra.cookpadclone.databinding.FragmentCollectionsBinding
 import com.hiteshchopra.cookpadclone.databinding.ItemCollectionsBinding
-import com.hiteshchopra.cookpadclone.utils.ViewState.Failure
-import com.hiteshchopra.cookpadclone.utils.ViewState.Loading
-import com.hiteshchopra.cookpadclone.utils.ViewState.NetworkError
-import com.hiteshchopra.cookpadclone.utils.ViewState.SuccessWithData
-import com.hiteshchopra.cookpadclone.utils.showToast
+import com.hiteshchopra.cookpadclone.home.HomeFragmentDirections
+import com.hiteshchopra.cookpadclone.utils.Utils.ViewState.Failure
+import com.hiteshchopra.cookpadclone.utils.Utils.ViewState.Loading
+import com.hiteshchopra.cookpadclone.utils.Utils.ViewState.NetworkError
+import com.hiteshchopra.cookpadclone.utils.Utils.ViewState.SuccessWithData
+import com.hiteshchopra.cookpadclone.utils.Utils.showToast
 import com.hiteshchopra.domain.model.CollectionsItemDomain
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CollectionsFragment : Fragment(), CollectionsListener {
+class CollectionsFragment : BaseFragment<FragmentCollectionsBinding>(), CollectionsListener {
+
+  override fun layoutId(): Int = R.layout.fragment_collections
 
   private val collectionViewModel: CollectionsFragmentVM by viewModels()
-  private lateinit var binding: FragmentCollectionsBinding
-  override fun onCreateView(
-    inflater: LayoutInflater, container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    binding = DataBindingUtil.inflate(
-      inflater,
-      R.layout.fragment_collections,
-      container,
-      false
-    )
-    return binding.root
-  }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
@@ -93,6 +81,11 @@ class CollectionsFragment : Fragment(), CollectionsListener {
   }
 
   override fun onCollectionItemClicked(collectionsItemDomain: CollectionsItemDomain) {
-    // Navigate to recipes screen
+    view?.findNavController()?.navigate(
+      HomeFragmentDirections.actionHomeFragmentToCollectionRecipeFragment(
+        collectionsItemDomain.id ?: -1
+      )
+    )
   }
+
 }

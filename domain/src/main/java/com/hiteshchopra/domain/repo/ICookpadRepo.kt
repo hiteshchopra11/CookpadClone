@@ -9,7 +9,7 @@ interface ICookpadRepo {
 
   suspend fun getCollectionById(id: Int): SafeResult<CollectionsItemDomain>
 
-  suspend fun getCollectionRecipe(id: Int): SafeResult<RecipeItemDomain>
+  suspend fun getCollectionRecipes(id: Int): SafeResult<List<RecipeItemDomain>>
 
   suspend fun getRecipes(): SafeResult<List<RecipeItemDomain>>
 

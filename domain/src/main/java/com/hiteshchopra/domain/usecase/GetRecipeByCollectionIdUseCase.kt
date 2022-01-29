@@ -6,8 +6,8 @@ import com.hiteshchopra.domain.repo.ICookpadRepo
 
 class GetRecipeByCollectionIdUseCase(
   private val cookpadRepo: ICookpadRepo
-) : BaseUseCase<SafeResult<RecipeItemDomain>, Int> {
-  override suspend fun perform(params: Int): SafeResult<RecipeItemDomain> {
-    return cookpadRepo.getRecipeById(params)
+) : BaseUseCase<SafeResult<List<RecipeItemDomain>>, Int> {
+  override suspend fun perform(params: Int): SafeResult<List<RecipeItemDomain>> {
+    return cookpadRepo.getCollectionRecipes(params)
   }
 }

@@ -7,4 +7,6 @@
   <string name="story">Story</string>
   <string name="ingredients">Ingredients</string>
   <string name="steps">Steps</string>
+  <string name="recipes">Recipes</string>
+  <string name="recipe_details">Recipe Details</string>
 </resources>

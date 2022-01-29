@@ -2,8 +2,8 @@ package com.hiteshchopra.cookpadclone.collections
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hiteshchopra.cookpadclone.utils.ViewState
-import com.hiteshchopra.cookpadclone.utils.ViewState.Loading
+import com.hiteshchopra.cookpadclone.utils.Utils.ViewState
+import com.hiteshchopra.cookpadclone.utils.Utils.ViewState.Loading
 import com.hiteshchopra.domain.SafeResult.Failure
 import com.hiteshchopra.domain.SafeResult.NetworkError
 import com.hiteshchopra.domain.SafeResult.Success

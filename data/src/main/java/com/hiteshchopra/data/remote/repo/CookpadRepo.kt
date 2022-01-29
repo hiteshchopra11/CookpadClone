@@ -32,9 +32,9 @@ class CookpadRepo(
     }
   }
 
-  override suspend fun getCollectionRecipe(id: Int): SafeResult<RecipeItemDomain> {
+  override suspend fun getCollectionRecipes(id: Int): SafeResult<List<RecipeItemDomain>> {
     return when (val response = cookpadRemoteSource.getCollectionRecipe(id)) {
-      is Success -> Success(recipeItemDataMapper.mapToDomain(response.data))
+      is Success -> Success(response.data.map { recipeItemDataMapper.mapToDomain(it) })
       is Failure -> Failure(response.exception)
       is NetworkError -> NetworkError
     }

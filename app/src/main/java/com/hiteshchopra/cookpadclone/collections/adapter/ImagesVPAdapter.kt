@@ -16,7 +16,9 @@ class ImagesVPAdapter(private val listOfImages: List<String?>?) :
   inner class ImagesVH(private val binding: ItemImageBinding) :
     ViewHolder(binding.root) {
     fun bind(imageUrl: String?) {
-      binding.ivCollectionImage.load(imageUrl)
+      binding.ivCollectionImage.load(imageUrl) {
+        placeholder(R.drawable.ic_placeholder)
+      }
     }
   }
 
