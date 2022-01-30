@@ -12,7 +12,7 @@
     tools:layout="@layout/fragment_recipe_details">
     <argument
       android:name="recipe"
-      app:argType="com.hiteshchopra.domain.model.RecipeItemDomain" />
+      app:argType="com.hiteshchopra.cookpadclone.models.recipe.RecipeItemUIModel" />
   </fragment>
   <fragment
     android:id="@+id/homeFragment"

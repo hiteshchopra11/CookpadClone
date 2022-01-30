@@ -8,17 +8,17 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import coil.load
 import com.hiteshchopra.cookpadclone.R
 import com.hiteshchopra.cookpadclone.databinding.ItemRecipeBinding
+import com.hiteshchopra.cookpadclone.models.recipe.RecipeItemUIModel
 import com.hiteshchopra.cookpadclone.recipes.RecipesAdapter.RecipeViewHolder
-import com.hiteshchopra.domain.model.RecipeItemDomain
 
 class RecipesAdapter(
   private val recipeListener: RecipeListener,
-  private val recipeItemDomainList: List<RecipeItemDomain>
+  private val recipeItemDomainList: List<RecipeItemUIModel>
 ) : Adapter<RecipeViewHolder>() {
 
   inner class RecipeViewHolder(private val binding: ItemRecipeBinding) :
     ViewHolder(binding.root) {
-    fun bind(recipeItemDomain: RecipeItemDomain) {
+    fun bind(recipeItemDomain: RecipeItemUIModel) {
       binding.apply {
         recipe = recipeItemDomain.title
         ivRecipeImage.load(recipeItemDomain.imageUrl)
@@ -48,5 +48,5 @@ class RecipesAdapter(
 }
 
 interface RecipeListener {
-  fun onRecipeClicked(recipeItemDomain: RecipeItemDomain)
+  fun onRecipeClicked(recipeItemUIModel: RecipeItemUIModel)
 }

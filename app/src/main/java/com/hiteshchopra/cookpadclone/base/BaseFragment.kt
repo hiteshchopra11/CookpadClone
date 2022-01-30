@@ -49,7 +49,7 @@ abstract class BaseFragment<B : ViewDataBinding> : Fragment() {
     }
   }
 
-  fun onNavigateUp() {
+  private fun onNavigateUp() {
     try {
       findNavController().popBackStack()
     } catch (illegalStateException: IllegalStateException) {
@@ -58,5 +58,4 @@ abstract class BaseFragment<B : ViewDataBinding> : Fragment() {
       }
     }
   }
-
 }

@@ -15,6 +15,7 @@ import com.hiteshchopra.cookpadclone.R
 import com.hiteshchopra.cookpadclone.R.string
 import com.hiteshchopra.cookpadclone.base.BaseFragment
 import com.hiteshchopra.cookpadclone.databinding.FragmentRecipesBinding
+import com.hiteshchopra.cookpadclone.models.recipe.RecipeItemUIModel
 import com.hiteshchopra.cookpadclone.recipes.RecipeListener
 import com.hiteshchopra.cookpadclone.recipes.RecipesAdapter
 import com.hiteshchopra.cookpadclone.utils.Utils.ViewState.Failure
@@ -86,7 +87,7 @@ class CollectionRecipeFragment : BaseFragment<FragmentRecipesBinding>(), RecipeL
             )
             NetworkError -> showToast(requireContext(), getString(string.network_error))
             is SuccessWithData<*> -> {
-              initRecyclerView(viewState.data as List<RecipeItemDomain>)
+              initRecyclerView(collectionRecipeFragmentVM.mapToUi(viewState.data as List<RecipeItemDomain>))
             }
             else -> {
               // Do Nothing
@@ -97,15 +98,15 @@ class CollectionRecipeFragment : BaseFragment<FragmentRecipesBinding>(), RecipeL
     }
   }
 
-  private fun initRecyclerView(recipeItemDomainList: List<RecipeItemDomain>) {
-    recipesAdapter = RecipesAdapter(this, recipeItemDomainList)
+  private fun initRecyclerView(recipeItemUIModelList: List<RecipeItemUIModel>) {
+    recipesAdapter = RecipesAdapter(this, recipeItemUIModelList)
     binding.rvRecipes.adapter = recipesAdapter
   }
 
-  override fun onRecipeClicked(recipeItemDomain: RecipeItemDomain) {
+  override fun onRecipeClicked(recipeItemUIModel: RecipeItemUIModel) {
     view?.findNavController()?.navigate(
       CollectionRecipeFragmentDirections.actionCollectionRecipeFragmentToRecipeDetailsFragment(
-        recipeItemDomain
+        recipeItemUIModel
       )
     )
   }

@@ -17,6 +17,7 @@ import com.hiteshchopra.cookpadclone.collections.adapter.ImagesVPAdapter
 import com.hiteshchopra.cookpadclone.databinding.FragmentCollectionsBinding
 import com.hiteshchopra.cookpadclone.databinding.ItemCollectionsBinding
 import com.hiteshchopra.cookpadclone.home.HomeFragmentDirections
+import com.hiteshchopra.cookpadclone.models.collection.CollectionsItemUIModel
 import com.hiteshchopra.cookpadclone.utils.Utils.ViewState.Failure
 import com.hiteshchopra.cookpadclone.utils.Utils.ViewState.Loading
 import com.hiteshchopra.cookpadclone.utils.Utils.ViewState.NetworkError
@@ -51,7 +52,7 @@ class CollectionsFragment : BaseFragment<FragmentCollectionsBinding>(), Collecti
             )
             NetworkError -> showToast(requireContext(), getString(string.network_error))
             is SuccessWithData<*> -> {
-              initRecyclerView(viewState.data as List<CollectionsItemDomain>)
+              initRecyclerView(collectionViewModel.mapToUi(viewState.data as List<CollectionsItemDomain>))
             }
             else -> {
               // Do Nothing
@@ -62,7 +63,7 @@ class CollectionsFragment : BaseFragment<FragmentCollectionsBinding>(), Collecti
     }
   }
 
-  private fun initRecyclerView(collectionsItemDomain: List<CollectionsItemDomain>) {
+  private fun initRecyclerView(collectionsItemDomain: List<CollectionsItemUIModel>) {
     val collectionsAdapter = CollectionsAdapter(this, collectionsItemDomain)
     binding.rvCollections.adapter = collectionsAdapter
   }
@@ -80,12 +81,11 @@ class CollectionsFragment : BaseFragment<FragmentCollectionsBinding>(), Collecti
     }.attach()
   }
 
-  override fun onCollectionItemClicked(collectionsItemDomain: CollectionsItemDomain) {
+  override fun onCollectionItemClicked(collectionsItemUIModel: CollectionsItemUIModel) {
     view?.findNavController()?.navigate(
       HomeFragmentDirections.actionHomeFragmentToCollectionRecipeFragment(
-        collectionsItemDomain.id ?: -1
+        collectionsItemUIModel.id ?: -1
       )
     )
   }
-
 }

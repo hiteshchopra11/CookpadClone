@@ -8,24 +8,24 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.hiteshchopra.cookpadclone.R
 import com.hiteshchopra.cookpadclone.collections.adapter.CollectionsAdapter.CollectionsItemViewHolder
 import com.hiteshchopra.cookpadclone.databinding.ItemCollectionsBinding
-import com.hiteshchopra.domain.model.CollectionsItemDomain
+import com.hiteshchopra.cookpadclone.models.collection.CollectionsItemUIModel
 
 class CollectionsAdapter(
   private val collectionsListener: CollectionsListener,
-  private val collectionsItemDomain: List<CollectionsItemDomain>
+  private val collectionsItemUIModelList: List<CollectionsItemUIModel>
 ) : Adapter<CollectionsItemViewHolder>() {
 
   inner class CollectionsItemViewHolder(private val binding: ItemCollectionsBinding) :
     ViewHolder(binding.root) {
-    fun bind(collectionsItemDomain: CollectionsItemDomain) {
-      binding.title = collectionsItemDomain.title
-      binding.description = collectionsItemDomain.description
+    fun bind(collectionsItemUIModel: CollectionsItemUIModel) {
+      binding.title = collectionsItemUIModel.title
+      binding.description = collectionsItemUIModel.description
       collectionsListener.populateImages(
         binding,
-        collectionsItemDomain.previewImageUrls
+        collectionsItemUIModel.previewImageUrls
       )
       binding.root.setOnClickListener {
-        collectionsListener.onCollectionItemClicked(collectionsItemDomain)
+        collectionsListener.onCollectionItemClicked(collectionsItemUIModel)
       }
     }
   }
@@ -39,10 +39,10 @@ class CollectionsAdapter(
   }
 
   override fun onBindViewHolder(holder: CollectionsItemViewHolder, position: Int) {
-    return holder.bind(collectionsItemDomain = collectionsItemDomain[position])
+    return holder.bind(collectionsItemUIModel = collectionsItemUIModelList[position])
   }
 
-  override fun getItemCount(): Int = collectionsItemDomain.size
+  override fun getItemCount(): Int = collectionsItemUIModelList.size
 }
 
 interface CollectionsListener {
@@ -51,5 +51,5 @@ interface CollectionsListener {
     imagesCollection: List<String?>?
   )
 
-  fun onCollectionItemClicked(collectionsItemDomain: CollectionsItemDomain)
+  fun onCollectionItemClicked(collectionsItemUIModel: CollectionsItemUIModel)
 }

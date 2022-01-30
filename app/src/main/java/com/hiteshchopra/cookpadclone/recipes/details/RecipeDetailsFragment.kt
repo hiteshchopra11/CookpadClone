@@ -12,6 +12,7 @@ import com.hiteshchopra.cookpadclone.base.BaseFragment
 import com.hiteshchopra.cookpadclone.collections.adapter.ImagesVPAdapter
 import com.hiteshchopra.cookpadclone.databinding.FragmentRecipeDetailsBinding
 import com.hiteshchopra.cookpadclone.databinding.ItemStepBinding
+import com.hiteshchopra.cookpadclone.models.recipe.RecipeItemUIModel
 import com.hiteshchopra.cookpadclone.utils.Utils.FORMAT_INPUT
 import com.hiteshchopra.cookpadclone.utils.Utils.FORMAT_OUTPUT
 import com.hiteshchopra.cookpadclone.utils.Utils.formatDate
@@ -28,7 +29,7 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>(), Reci
     initUI(args.recipe)
   }
 
-  private fun initUI(recipe: RecipeItemDomain) {
+  private fun initUI(recipe: RecipeItemUIModel) {
     /* Setup the toolbar */
     setupToolbar(binding.toolbar, getString(string.recipe_details), true)
     val recipeStepsAdapter = RecipeStepsAdapter(this, recipe.steps)

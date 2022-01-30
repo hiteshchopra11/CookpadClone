@@ -2,11 +2,14 @@ package com.hiteshchopra.cookpadclone.collections
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hiteshchopra.cookpadclone.models.collection.CollectionsItemUIMapper
+import com.hiteshchopra.cookpadclone.models.collection.CollectionsItemUIModel
 import com.hiteshchopra.cookpadclone.utils.Utils.ViewState
 import com.hiteshchopra.cookpadclone.utils.Utils.ViewState.Loading
 import com.hiteshchopra.domain.SafeResult.Failure
 import com.hiteshchopra.domain.SafeResult.NetworkError
 import com.hiteshchopra.domain.SafeResult.Success
+import com.hiteshchopra.domain.model.CollectionsItemDomain
 import com.hiteshchopra.domain.usecase.GetCollectionsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +18,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CollectionsFragmentVM @Inject constructor() : ViewModel() {
+class CollectionsFragmentVM @Inject constructor(
+  private val collectionsItemUIMapper: CollectionsItemUIMapper
+) : ViewModel() {
 
   @Inject
   lateinit var getCollectionsUseCase: GetCollectionsUseCase
@@ -27,6 +32,10 @@ class CollectionsFragmentVM @Inject constructor() : ViewModel() {
 
   private val _viewState = MutableStateFlow<ViewState>(Loading)
   val viewState: StateFlow<ViewState> = _viewState
+
+  fun mapToUi(recipeItemDomain: List<CollectionsItemDomain>): List<CollectionsItemUIModel> {
+    return recipeItemDomain.map { collectionsItemUIMapper.mapToPresentation(it) }
+  }
 
   private fun getCollections() {
     viewModelScope.launch {
