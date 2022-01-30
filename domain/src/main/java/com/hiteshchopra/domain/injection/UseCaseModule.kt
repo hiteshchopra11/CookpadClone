@@ -1,10 +1,8 @@
 package com.hiteshchopra.domain.injection
 
 import com.hiteshchopra.domain.repo.ICookpadRepo
-import com.hiteshchopra.domain.usecase.GetCollectionByIdUseCase
 import com.hiteshchopra.domain.usecase.GetCollectionsUseCase
 import com.hiteshchopra.domain.usecase.GetRecipeByCollectionIdUseCase
-import com.hiteshchopra.domain.usecase.GetRecipeByIdUseCase
 import com.hiteshchopra.domain.usecase.GetRecipesUseCase
 import dagger.Module
 import dagger.Provides
@@ -21,11 +19,6 @@ object UseCaseModule {
   }
 
   @Provides
-  fun provideGetCollectionByIdsUseCase(cookpadRepo: ICookpadRepo): GetCollectionByIdUseCase {
-    return GetCollectionByIdUseCase(cookpadRepo)
-  }
-
-  @Provides
   fun provideGetRecipeByCollectionIdUseCase(cookpadRepo: ICookpadRepo): GetRecipeByCollectionIdUseCase {
     return GetRecipeByCollectionIdUseCase(cookpadRepo)
   }
@@ -34,10 +27,4 @@ object UseCaseModule {
   fun providesGetRecipesUseCase(cookpadRepo: ICookpadRepo): GetRecipesUseCase {
     return GetRecipesUseCase(cookpadRepo)
   }
-
-  @Provides
-  fun providesGetRecipesByIdUseCase(cookpadRepo: ICookpadRepo): GetRecipeByIdUseCase {
-    return GetRecipeByIdUseCase(cookpadRepo)
-  }
-
 }

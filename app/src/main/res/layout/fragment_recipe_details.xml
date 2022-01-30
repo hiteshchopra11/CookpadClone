@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+    <variable
+      name="recipeName"
+      type="String" />
+
+    <variable
+      name="date"
+      type="String" />
+
+    <variable
+      name="story"
+      type="String" />
+
+    <variable
+      name="ingredients"
+      type="String" />
+
+    <variable
+      name="author"
+      type="String" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:overScrollMode="never">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+          android:id="@+id/toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="#e53935"
+          android:elevation="@dimen/dimen_4dp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:navigationIcon="?attr/homeAsUpIndicator"
+          app:titleTextColor="@android:color/white" />
+
+        <ImageView
+          android:id="@+id/iv_author"
+          android:layout_width="@dimen/dimen_50dp"
+          android:layout_height="@dimen/dimen_50dp"
+          android:layout_margin="@dimen/dimen_16dp"
+          android:scaleType="centerCrop"
+          android:src="@color/cardview_dark_background"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <TextView
+          android:id="@+id/tv_recipe_name"
+          android:layout_width="@dimen/dimen_0dp"
+          android:layout_height="wrap_content"
+          android:layout_margin="@dimen/dimen_16dp"
+          android:ellipsize="end"
+          android:fontFamily="@font/amaranth"
+          android:maxLines="1"
+          android:text="@{recipeName}"
+          android:textColor="@color/black"
+          android:textSize="@dimen/dimen_18sp"
+          app:layout_constraintBottom_toBottomOf="@id/iv_author"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@id/iv_author"
+          app:layout_constraintTop_toTopOf="@id/iv_author"
+          tools:text="Mini Olive pies by Vaggelio Mini Olive pies by Vaggelio" />
+
+        <ImageView
+          android:id="@+id/iv_recipe_image"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dimen_200dp"
+          android:layout_margin="@dimen/dimen_16dp"
+          android:scaleType="centerCrop"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/iv_author" />
+
+        <TextView
+          android:id="@+id/tv_published_date"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginVertical="@dimen/dimen_4dp"
+          android:fontFamily="@font/bitter_bold"
+          android:text="@{date}"
+          android:textColor="@color/black"
+          android:textSize="@dimen/dimen_16sp"
+          app:layout_constraintEnd_toEndOf="@id/iv_recipe_image"
+          app:layout_constraintTop_toBottomOf="@id/iv_recipe_image"
+          tools:text="22 December, 2021" />
+
+        <TextView
+          android:id="@+id/tv_story"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:fontFamily="@font/lemon"
+          android:text="@string/story"
+          android:textColor="@color/black"
+          android:textSize="@dimen/dimen_20sp"
+          app:layout_constraintStart_toStartOf="@id/iv_recipe_image"
+          app:layout_constraintTop_toBottomOf="@id/tv_published_date"
+          tools:text="Story" />
+
+        <TextView
+          android:id="@+id/tv_story_description"
+          android:layout_width="@dimen/dimen_0dp"
+          android:layout_height="wrap_content"
+          android:layout_margin="@dimen/dimen_16dp"
+          android:layout_marginHorizontal="@dimen/dimen_16dp"
+          android:fontFamily="@font/amaranth_italic"
+          android:text="@{story}"
+          android:textColor="@color/black"
+          android:textSize="@dimen/dimen_16sp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/tv_story"
+          tools:text="Mini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by Vaggelio" />
+
+        <TextView
+          android:id="@+id/tv_ingredients"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:fontFamily="@font/lemon"
+          android:text="@string/ingredients"
+          android:textColor="@color/black"
+          android:textSize="@dimen/dimen_20sp"
+          app:layout_constraintStart_toStartOf="@id/iv_recipe_image"
+          app:layout_constraintTop_toBottomOf="@id/tv_story_description" />
+
+        <TextView
+          android:id="@+id/tv_ingredients_description"
+          android:layout_width="@dimen/dimen_0dp"
+          android:layout_height="wrap_content"
+          android:layout_margin="@dimen/dimen_16dp"
+          android:layout_marginHorizontal="@dimen/dimen_16dp"
+          android:fontFamily="@font/amaranth_italic"
+          android:text="@{ingredients}"
+          android:textColor="@color/black"
+          android:textSize="@dimen/dimen_16sp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/tv_ingredients"
+          tools:text="Mini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by VaggelioMini Olive pies by Vaggelio Mini Olive pies by Vaggelio" />
+
+        <TextView
+          android:id="@+id/tv_steps"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dimen_8dp"
+          android:fontFamily="@font/lemon"
+          android:text="@string/steps"
+          android:textColor="@color/black"
+          android:textSize="@dimen/dimen_20sp"
+          app:layout_constraintStart_toStartOf="@id/iv_recipe_image"
+          app:layout_constraintTop_toBottomOf="@id/tv_ingredients_description" />
+
+        <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rv_steps_description"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="@id/iv_recipe_image"
+          app:layout_constraintTop_toBottomOf="@id/tv_steps"
+          tools:itemCount="5"
+          tools:listitem="@layout/item_step" />
+
+        <TextView
+          android:id="@+id/tv_author"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginVertical="@dimen/dimen_8dp"
+          android:fontFamily="@font/bitter_bold"
+          android:text='@{"Credits-: "+author}'
+          android:textColor="@color/black"
+          android:textSize="@dimen/dimen_16sp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="@id/iv_recipe_image"
+          app:layout_constraintTop_toBottomOf="@id/rv_steps_description"
+          tools:text="Credits-: Hitesh Chopra" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

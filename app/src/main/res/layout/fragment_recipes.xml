@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+  <data>
+
+    <variable
+      name="isLoading"
+      type="Boolean" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".recipes.RecipesFragment">
+
+
+    <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="#e53935"
+      android:elevation="@dimen/dimen_4dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:navigationIcon="?attr/homeAsUpIndicator"
+      app:titleTextColor="@android:color/white" />
+
+    <androidx.constraintlayout.widget.Barrier
+      android:id="@+id/barrier"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:barrierDirection="bottom"
+      app:constraint_referenced_ids="toolbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_recipes"
+      android:layout_width="@dimen/dimen_0dp"
+      android:layout_height="@dimen/dimen_0dp"
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/barrier"
+      tools:itemCount="10"
+      tools:listitem="@layout/item_recipe" />
+
+    <ProgressBar
+      android:id="@+id/pb_loading"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:visibility="@{isLoading}" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
