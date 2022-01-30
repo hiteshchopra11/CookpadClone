@@ -2,6 +2,7 @@ package com.hiteshchopra.cookpadclone.recipes.details
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import coil.load
 import coil.transform.RoundedCornersTransformation
@@ -13,15 +14,12 @@ import com.hiteshchopra.cookpadclone.collections.adapter.ImagesVPAdapter
 import com.hiteshchopra.cookpadclone.databinding.FragmentRecipeDetailsBinding
 import com.hiteshchopra.cookpadclone.databinding.ItemStepBinding
 import com.hiteshchopra.cookpadclone.models.recipe.RecipeItemUIModel
-import com.hiteshchopra.cookpadclone.utils.Utils.FORMAT_INPUT
-import com.hiteshchopra.cookpadclone.utils.Utils.FORMAT_OUTPUT
-import com.hiteshchopra.cookpadclone.utils.Utils.formatDate
-import com.hiteshchopra.domain.model.RecipeItemDomain
 
 class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>(), RecipeStepsListener {
 
   override fun layoutId(): Int = R.layout.fragment_recipe_details
 
+  private val recipeDetailsVM: RecipeDetailsFragmentVM by viewModels()
   private val args: RecipeDetailsFragmentArgs by navArgs()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,11 +44,7 @@ class RecipeDetailsFragment : BaseFragment<FragmentRecipeDetailsBinding>(), Reci
         isNestedScrollingEnabled = false
       }
       recipeName = recipe.title
-      date = formatDate(
-        date = recipe.publishedAt?.substring(0, 10),
-        inputFormat = FORMAT_INPUT,
-        outputFormat = FORMAT_OUTPUT
-      )
+      date = recipe.publishedAt?.let { recipeDetailsVM.formatDate(it) }
       author = recipe.user?.name
       ivAuthor.load(recipe.user?.imageUrl) {
         // Coil transformation to make the image round

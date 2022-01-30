@@ -19,11 +19,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CollectionsFragmentVM @Inject constructor(
+  private val getCollectionsUseCase: GetCollectionsUseCase,
   private val collectionsItemUIMapper: CollectionsItemUIMapper
 ) : ViewModel() {
-
-  @Inject
-  lateinit var getCollectionsUseCase: GetCollectionsUseCase
 
   /* StateFlow for publishing/observing the UI changes to Fragment */
   init {
