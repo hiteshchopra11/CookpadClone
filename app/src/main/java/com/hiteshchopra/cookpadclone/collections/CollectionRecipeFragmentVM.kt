@@ -19,11 +19,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CollectionRecipeFragmentVM @Inject constructor(
+  private val getRecipeByCollectionIdUseCase: GetRecipeByCollectionIdUseCase,
   private val recipeItemUIMapper: RecipeItemUIMapper
 ) : ViewModel() {
-
-  @Inject
-  lateinit var getRecipeByCollectionIdUseCase: GetRecipeByCollectionIdUseCase
 
   /* StateFlow for publishing/observing the UI changes to Fragment */
   private val _viewState = MutableStateFlow<ViewState>(Loading)

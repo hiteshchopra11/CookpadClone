@@ -7,7 +7,7 @@ import java.util.Locale
 
 object Utils {
   const val FORMAT_OUTPUT = "dd MMMM yyyy"
-  const val FORMAT_INPUT = "yyyy-mm-dd"
+  const val FORMAT_INPUT = "yyyy-MM-dd"
   fun showToast(context: Context, message: String) {
     return Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
   }

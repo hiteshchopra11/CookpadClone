@@ -19,10 +19,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RecipesFragmentVM @Inject constructor(
+  private var getRecipesUseCase: GetRecipesUseCase,
   private val recipeItemUIMapper: RecipeItemUIMapper
 ) : ViewModel() {
-  @Inject
-  lateinit var getRecipesUseCase: GetRecipesUseCase
 
   /* StateFlow for publishing/observing the UI changes to Fragment */
   init {
@@ -36,7 +35,7 @@ class RecipesFragmentVM @Inject constructor(
     return recipeItemDomain.map { recipeItemUIMapper.mapToPresentation(it) }
   }
 
-  private fun getRecipes() {
+  fun getRecipes() {
     viewModelScope.launch {
       when (val response = getRecipesUseCase.perform()) {
         is Failure -> _viewState.value = ViewState.Failure(response.exception)
